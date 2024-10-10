@@ -3,6 +3,7 @@
 import Image from "next/image";
 import FlipClock from "../flip-clock";
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react';
 
 function Clock() {
     const params = useSearchParams();
@@ -24,4 +25,10 @@ function Clock() {
 }
 
 
-export default Clock;
+export default function () {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <Clock />    
+        </Suspense>
+    )
+};
